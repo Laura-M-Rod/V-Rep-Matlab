@@ -1,0 +1,55 @@
+FUNCIONES API REMOTA EN ESPAÑOL
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ACLARACIÓN: PARA MAYOR INFORMACIÓN DIRIGASE AL VIDEO QUE SE ENUENTRA EN: https://youtu.be/rvUkWKBLTNQ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Iniciar simulación en V-REP con funciones en español
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+vrep=remApi('remoteApi');
+vrep.simxFinalizar(-1);
+clientID=vrep.simxComenzar(true,5000,5);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Finalizar Simulación en V-REP con funciones en español
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+vrep.simxFinalizar(-1);
+vrep.eliminar();
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Modos de operación mas Usados con funciones en español
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+vrep.simx_modo_bloqueando
+vrep.simx_modo_unavez
+vrep.simx_modo_retransmision
+vrep.simx_modo_regulacion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Funciones mas usadas en las practicas en V-REP
+% Función obtener handle del Objeto
+[~,nombre objeto (lo pone uno)]=vrep.simxObtenerObjeto(clientID,'nombre del objeto en V-REP',Modo de Operación); 
+
+% Funcion obtener la distancia (x,y,z) del objeto que detecta el sensor de proximidad
+[~,nombre del vector que guarda la variable,nombre variable[en m],~,~]=vrep.simxLeerSensorProximidad(clientID,nombre objeto,modo de operación);
+
+% Funcion obtener la posición angular de una articulación 
+[~,nombre variable(en rad)]=vrep.simxLeerPosicionMotor(clientID,nombre objeto,modo de operación);
+
+
+% Funcion obtener la posicion (x,y,z) de un objeto
+[~,nombre variable (en m)]=vrep.simxLeerPosicion(clientID,nombre objeto,-1,modo de operación);
+
+% Funcion obtener las velocidades lineales y angulares en (x,y,z) de un objeto
+[~,nombre variable(velocidades lineales [en m/s]),nombre variable(velocidades angulares[en rad/s])]=vrep.simxLeerVelocidad(clientID,nombre objeto,modo de operación);
+
+% Funcion obtener la imagen de un sensor de visión 
+[~,nombre variable(resolución),nombre variable(matriz de pixeles [imagen])]=vrep.simxObtenerImagenSensorVision2(clientID,nombre objeto,0,modo de operación);
+
+% Funcion obtener la orientación del objeto (angulo sobre el mismo eje del objeto [x,y,z])
+[~,nombre variable(en rad)]=simxLeerOrientacion(clientID,nombre objeto,-1,modo de operación);
+
+% Función asignar una velocidad a una articulacion en V-REP
+vrep.simxFijarVelocidadObjetivoMotor(clientID,nombre objeto,valor asignado (en rad/s),modo de operación);
+
+% Función asignar una posicion angular a una articulacion en V-REP
+vrep.simxFijarPosicionObjetivoMotor(clientID,nombre objeto,valor asignado (en rad),modo de operación);
